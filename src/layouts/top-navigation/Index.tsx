@@ -14,7 +14,7 @@ const Navigation = () => {
       <div className="hidden md:flex items-center gap-5">
         <NavItem to="/explorer">Explorer</NavItem>
         <NavItem to="/docs">Docs</NavItem>
-        <NavItem to="/dashboard">My Account</NavItem>
+        <NavItem to="/dashboard">Dashboard</NavItem>
       </div>
       <div className="md:hidden relative">
         <div className="text-white-2">
@@ -28,7 +28,7 @@ const Navigation = () => {
             <NavItem to="/docs">Docs</NavItem>
           </div>
           <div className="block my-1">
-            <NavItem to="/dashboard">My Account</NavItem>
+            <NavItem to="/dashboard">Dashboard</NavItem>
           </div>
         </div>
       </div>
