@@ -28,7 +28,7 @@ function App() {
               <Route path="/explorer" element={<ExplorerPage />} />
               <Route path="/explorer/:id" element={<MarketSearchPage />} />
               <Route
-                path="/explorer/:id/:assetId"
+                path="/explorer/asset/:assetId"
                 element={<AssetSearchPage />}
               />
               <Route path="/dashboard" element={<DashboardPage />} />

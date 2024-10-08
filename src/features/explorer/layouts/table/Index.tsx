@@ -1,5 +1,3 @@
-//"2ngcNur94HueyioioIJI29hieEuFEC"
-
 import TableData from "../../components/table-data/Index";
 
 interface Props {
@@ -28,14 +26,17 @@ const Table = ({ data }: Props) => {
       </div>
       {data.map((cur) => {
         return (
-          <TableData
-            key={cur.id}
-            asset={cur.asset}
-            type={cur.type}
-            buyer={cur.ownerId}
-            assetID={cur.id}
-            amount={cur.amount}
-          />
+          <div key={cur.id}>
+            <TableData
+              key={cur.id}
+              asset={cur.asset}
+              type={cur.type}
+              buyer={cur.ownerId}
+              assetID={cur.id}
+              amount={cur.amount}
+              assetObject={cur}
+            />
+          </div>
         );
       })}
     </div>

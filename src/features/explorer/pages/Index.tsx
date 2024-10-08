@@ -10,11 +10,14 @@ import ScrollingCarouselFilters from "../components/scroll-filters/Index";
 import { useGetMarkets } from "../services/get-markets/Index";
 import { useMemo } from "react";
 import { useGetAllAssets, useSearchAssets } from "../services/get-assets/Index";
+import { useNavigate } from "react-router-dom";
+import { saveToLocalStorage } from "@/utils/localstorage/Index";
 
 const Explorer = () => {
   const { data } = useGetMarkets();
   const { data: assetsData } = useGetAllAssets();
   const { data: assetsSearch, isError, isLoading, refetch } = useSearchAssets();
+  const navigate = useNavigate();
   const collections = useMemo(() => {
     return (
       data?.data?.items?.markets?.map((cur: any) => ({
@@ -65,8 +68,6 @@ const Explorer = () => {
       })) || []
     );
   }, [assetsSearch]);
-  //console.log(assetsData);
-  //console.log(assets);
 
   const handleCollection = (value: {
     _id: string;
@@ -76,7 +77,8 @@ const Explorer = () => {
     description: string;
     creatorId: string;
   }) => {
-    console.log(value);
+    saveToLocalStorage("market", value);
+    navigate(`/explorer/${value._id}`);
   };
 
   return (

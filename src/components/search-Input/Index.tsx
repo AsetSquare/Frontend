@@ -1,19 +1,28 @@
 import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { RiSearch2Line } from "react-icons/ri";
 import { debounce } from "lodash";
 import LoadingState from "../loading-state/Index";
 import ErrorState from "../error-state/Index";
 import EmptyState from "../empty-state/Index";
+import { saveToLocalStorage } from "@/utils/localstorage/Index";
 
 interface SearchInputProps {
   isLoading?: boolean;
   isError?: boolean;
   data?: {
+    asset: string;
     name: string;
     id: string;
+    assetAddress: string;
+    type: string;
+    amount: number;
+    description: string;
     imageUrl: string;
+    marketId: string;
+    ownerId: string;
+    status: string;
   }[];
   refetch?: any;
   handleChange?: any;
@@ -32,6 +41,7 @@ const SearchInput = ({
 }: SearchInputProps) => {
   const [value, setValue] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   //Search Jobs Handler
   const searchHandler = debounce((value) => {
@@ -105,7 +115,14 @@ const SearchInput = ({
             ) : data?.length > 0 ? (
               data?.map((cur) => {
                 return (
-                  <div className="px-3 py-4 border-y border-white-6 flex items-center gap-3">
+                  <div
+                    key={cur.id}
+                    className="px-3 py-4 border-y border-white-6 flex items-center cursor-pointer gap-3"
+                    onClick={() => {
+                      saveToLocalStorage("asset", cur);
+                      navigate(`/explorer/asset/${cur.id}`);
+                    }}
+                  >
                     <img
                       src={cur.imageUrl}
                       alt=""
