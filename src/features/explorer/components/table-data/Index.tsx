@@ -13,8 +13,8 @@ interface Props {
 
 const TableData = ({ asset, type, amount, buyer, assetID }: Props) => {
   return (
-    <div className="grid items-center grid-cols-10 px-5 py-4 border-[0.67px] border-white-6">
-      <div className="col-span-2">
+    <div className="grid items-center grid-cols-11 px-3 w-full md:px-5 py-4 border-[0.67px] border-white-6">
+      <div className="col-span-3">
         <p className="text-white-2 uppercase text-body-4">{asset}</p>
       </div>
       <div className="col-span-2">
@@ -53,7 +53,7 @@ export const CopyText = ({
     if (copied) {
       timer = window.setTimeout(() => {
         setCopied(false);
-      }, 2000);
+      }, 1000);
     }
     return () => {
       if (timer) window.clearTimeout(timer);

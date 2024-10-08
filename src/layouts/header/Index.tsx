@@ -5,7 +5,7 @@ import Navigation from "../top-navigation/Index";
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between px-[5%] py-7">
+    <div className="flex items-center justify-between px-[3.5%] py-7">
       <div className="flex items-center md:gap-[10vw]">
         <Logo className="" />
         <div className="hidden md:block">

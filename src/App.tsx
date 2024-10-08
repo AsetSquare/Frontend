@@ -5,6 +5,8 @@ import { AuthProvider } from "./context/auth-provider/Index";
 import HomePage from "./views/home/Index";
 import ExplorerPage from "./views/explorer/Index";
 import DashboardPage from "./views/dashboard/Index";
+import AssetSearchPage from "./views/asset-search/asset-search/Index";
+import MarketSearchPage from "./views/asset-search/market-search/Index";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +26,11 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/explorer" element={<ExplorerPage />} />
+              <Route path="/explorer/:id" element={<MarketSearchPage />} />
+              <Route
+                path="/explorer/:id/:assetId"
+                element={<AssetSearchPage />}
+              />
               <Route path="/dashboard" element={<DashboardPage />} />
             </Routes>
           </AuthProvider>
