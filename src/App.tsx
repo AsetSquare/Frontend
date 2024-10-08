@@ -7,6 +7,7 @@ import ExplorerPage from "./views/explorer/Index";
 import DashboardPage from "./views/dashboard/Index";
 import AssetSearchPage from "./views/asset-search/asset-search/Index";
 import MarketSearchPage from "./views/asset-search/market-search/Index";
+import { UnifiedWalletProvider } from "@jup-ag/wallet-adapter";
 
 const queryClient = new QueryClient({
   defaultOptions: {
