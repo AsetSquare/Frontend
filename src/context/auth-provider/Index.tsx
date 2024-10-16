@@ -11,8 +11,8 @@ interface AuthProps {
 }
 
 interface AuthContextProps {
-  wallet: string;
   apiKey: string;
+  token: string;
   public_key: string;
 }
 
@@ -25,8 +25,8 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProps) => {
   const [auth, setAuth] = useState<AuthContextProps>({
-    wallet: "",
     apiKey: "",
+    token: "",
     public_key: "",
   });
 

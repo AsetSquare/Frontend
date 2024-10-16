@@ -22,7 +22,7 @@ const Dashboard = () => {
         <Header />
         <div className="px-[3%] mt-[2vh] md:mt-[3vh] xl:mt-[10vh] pt-10 pb-7">
           <div className="grid grid-cols-12 gap-5">
-            <Card title="Wallet Balance" amount={formatAmount(200000)} />
+            <Card title="Wallet Balance" amount={formatAmount(10)} />
             <div className="col-span-12 xl:col-span-8">
               <div className="my-2">
                 <KeysClipboard
@@ -34,7 +34,7 @@ const Dashboard = () => {
               <div className="my-4">
                 <KeysClipboard
                   title="Wallet Address"
-                  value="9h5Pu7u3wP5Zq84seLFUGXsrqdUgwPcZxmsjpfKfSwYJ"
+                  value="J3jij1Nx8pvgeD2KWjd6gyKeMp4RRGM6xRnUdx282g4"
                   icon={<FaWallet />}
                 />
               </div>

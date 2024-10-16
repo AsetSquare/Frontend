@@ -66,7 +66,7 @@ const AssetSearch = () => {
             />
             <KeysClipboard
               title="Asset ID"
-              value={asset?.id}
+              value={asset?.assetAddress}
               icon={<FaWallet />}
             />
           </div>

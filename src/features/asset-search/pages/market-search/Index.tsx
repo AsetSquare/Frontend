@@ -12,7 +12,9 @@ import { FaWallet } from "react-icons/fa6";
 
 const MarketSearch = () => {
   const { data: assetsSearch, isError, isLoading, refetch } = useSearchAssets();
+
   const market: any = getFromLocalStorage("market", "not found");
+  console.log(market);
 
   const searchAssets = useMemo(() => {
     return (

@@ -35,6 +35,8 @@ const HomePage = () => {
             <div className="mx-auto flex justify-center mt-8">
               <div className="flex items-center gap-4">
                 <Button
+                  to="https://docs.assetsquare.xyz/"
+                  external={true}
                   type="primary"
                   className="border border-[#10461D] !bg-[#07190B] hover:!bg-green-dim-9 rounded !py-3.5 !px-3 md:!px-5 !text-sub-6 md:!text-sub-5!text-green-dark-6 flex items-center gap-2"
                 >
@@ -42,6 +44,7 @@ const HomePage = () => {
                 </Button>
                 <Button
                   type="primary"
+                  to="/explorer"
                   className="rounded !py-3.5 !px-3 md:!px-5 !text-sub-6 md:!text-sub-5 hover:!bg-green-dark-7 !text-green-light-11 flex items-center gap-2"
                 >
                   Exploreeeeee <RiSkipRightFill className="text-[20px]" />
@@ -80,8 +83,9 @@ const HomePage = () => {
           <p className="text-body-4 text-white-5 mt-1 mx-3 md:mx-[5vw] xl:mx-[20vw] text-center">
             Asset Square is a Real world Asset market place Aggregator and
             Developer tooling.<br></br> At it’s core its a RWA marketplace for
-            buying and selling of RWA and also trading of the Real World Assets
-            in real time. With an open explorer for tracking Real World Assets
+            buying and selling of intransit RWA and also trading of the Real
+            World Assets in real time. With an open explorer for tracking Those
+            Assets
           </p>
           <div className="flex justify-center items-center my-5">
             <img

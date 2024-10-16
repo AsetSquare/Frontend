@@ -1,7 +1,7 @@
-import Button from "@/components/button/Index";
 import Logo from "@/components/logo/Index";
-import { TfiWallet } from "react-icons/tfi";
 import Navigation from "../top-navigation/Index";
+import { UnifiedWalletButton } from "@jup-ag/wallet-adapter";
+import WalletButton from "@/components/button/ConnectWalletButton";
 
 const Header = () => {
   return (
@@ -16,10 +16,7 @@ const Header = () => {
         <div className="md:hidden block">
           <Navigation />
         </div>
-        <Button type="primary" className="flex items-center gap-2">
-          <TfiWallet className="text-[17px]" />
-          Connect <span className="hidden md:inline">Wallet</span>
-        </Button>
+        <WalletButton type="primary" className="flex items-center gap-2" />
       </div>
     </div>
   );
