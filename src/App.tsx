@@ -63,7 +63,6 @@ function App() {
                   path="/explorer/asset/:assetId"
                   element={<AssetSearchPage />}
                 />
-                <Route path="/dashboard" element={<DashboardPage />} />
               </Routes>
             </AuthProvider>
             <Toaster
@@ -78,7 +77,7 @@ function App() {
                   },
                 },
                 error: {
-                  duration: 7000,
+                  duration: 5000,
                   style: {
                     border: "1.5px solid #EB5757",
                   },

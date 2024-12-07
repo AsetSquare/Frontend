@@ -3,9 +3,10 @@ import { FaWallet } from "react-icons/fa6";
 interface Props {
   title: string;
   amount: number | string;
+  curr?: string;
 }
 
-const Card = ({ title, amount }: Props) => {
+const Card = ({ title, amount, curr }: Props) => {
   return (
     <div className="bg-black-6 border border-black-5 rounded-lg py-6 px-7 col-span-12 xl:col-span-4">
       <div className="flex gap-2 items-center">
@@ -15,7 +16,7 @@ const Card = ({ title, amount }: Props) => {
         <p className="text-body-4 text-white-4">{title}</p>
       </div>
       <h3 className="mt-[10%] xl:mt-[21%] text-title-1 text-white-1">
-        ${amount}
+        {curr ? ` ${amount} ${curr}` : `${amount}`}
       </h3>
     </div>
   );

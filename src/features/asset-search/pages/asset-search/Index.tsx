@@ -8,6 +8,7 @@ import { FaWallet } from "react-icons/fa6";
 
 const AssetSearch = () => {
   const asset: any = getFromLocalStorage("asset", "not found");
+  console.log("hello");
 
   return (
     <div>

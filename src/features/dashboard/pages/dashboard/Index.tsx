@@ -1,13 +1,52 @@
+import { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 import Header from "@/layouts/header/Index";
 import ImageBg from "@/assets/bg/bg-1.svg";
 import Card from "../../components/card/Index";
 import { formatAmount } from "@/utils/format-amount/Index";
 import { RiFileCopyLine } from "react-icons/ri";
-import { ReactNode, useEffect, useState } from "react";
 import { FaWallet } from "react-icons/fa6";
 import { MdKey } from "react-icons/md";
+import {
+  useGetProfile,
+  useGetApiKey,
+} from "@/features/explorer/services/get-api-key";
 
 const Dashboard = () => {
+  const { data, error, isLoading } = useGetProfile();
+  const {
+    data: Apidata,
+    error: apierror,
+    isLoading: apiLoading,
+  } = useGetApiKey();
+  const [profileData, setProfileData] = useState({
+    publicKey: "",
+    walletBalance: 0,
+    apiKey: "",
+  });
+
+  useEffect(() => {
+    if (data?.data?.item && Apidata?.data.item) {
+      const { publicKey, walletBalance } = data.data.item;
+      const { apiKey } = Apidata.data.item;
+      setProfileData({ publicKey, walletBalance, apiKey });
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error("Failed to fetch profile data. Please try again later.");
+    }
+  }, [error]);
+
+  if (isLoading && apiLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading dashboard. Please refresh the page.</div>;
+  }
+
   return (
     <div>
       <div
@@ -22,19 +61,23 @@ const Dashboard = () => {
         <Header />
         <div className="px-[3%] mt-[2vh] md:mt-[3vh] xl:mt-[10vh] pt-10 pb-7">
           <div className="grid grid-cols-12 gap-5">
-            <Card title="Wallet Balance" amount={formatAmount(10)} />
+            <Card
+              title="Wallet Balance"
+              curr="SOl"
+              amount={formatAmount(profileData.walletBalance)}
+            />
             <div className="col-span-12 xl:col-span-8">
               <div className="my-2">
                 <KeysClipboard
                   title="API Key"
-                  value="9h5Pu7u3wP5Zq84seLFUGXsrqdUgwPcZxmsjpfKfSwYJ"
+                  value={profileData.apiKey || "loading..."}
                   icon={<MdKey />}
                 />
               </div>
               <div className="my-4">
                 <KeysClipboard
                   title="Wallet Address"
-                  value="J3jij1Nx8pvgeD2KWjd6gyKeMp4RRGM6xRnUdx282g4"
+                  value={profileData.publicKey || "loading..."}
                   icon={<FaWallet />}
                 />
               </div>
@@ -48,7 +91,7 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-export const CopyText = ({ value }: { value: string }) => {
+const CopyText = ({ value }: { value: string }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -67,8 +110,10 @@ export const CopyText = ({ value }: { value: string }) => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
+      toast.success("Copied to clipboard");
     } catch (err) {
       console.error("Failed to copy text: ", err);
+      toast.error("Failed to copy text");
     }
   };
 
@@ -94,7 +139,7 @@ export const KeysClipboard = ({
 }: {
   title: string;
   value: string;
-  icon: ReactNode;
+  icon: React.ReactNode;
 }) => {
   return (
     <div className="border border-black-5 bg-black-6 p-4 rounded-lg">

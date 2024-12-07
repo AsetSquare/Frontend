@@ -21,3 +21,21 @@ export const useGetAssetsByMarket = () => {
     refetchOnWindowFocus: false,
   });
 };
+
+export const useGetMarketDetailOnchain = (marketId) => {
+  return useQuery({
+    queryKey: ["marketsid"],
+    queryFn: async () => {
+      const { data } = await axiosApi.post(
+        `/market/onchain`,
+        { collectionId: marketId },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      return data;
+    },
+    refetchOnWindowFocus: false,
+  });
+};
