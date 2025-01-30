@@ -129,8 +129,11 @@ const SearchInput = ({
                       className="p-2.5 w-10 h-10 object-contain border-[0.67px] rounded border-white-6 bg-black-6"
                     />
                     <div>
-                      <h6 className="text-sub-6 text-white-1 uppercase">
-                        {cur.name}
+                      <h6 className="text-sub-6 text-white-1 uppercase flex items-center gap-2">
+                        {cur.name}{" "}
+                        <span className="text-body-6 bg-green-dark-6 text-black-6 !font-semibold !text-[11px] py-0 px-2 rounded-lg block">
+                          {cur.type}
+                        </span>
                       </h6>
                       <p className="text-body-5 text-white-4 mt-1">{cur.id}</p>
                     </div>

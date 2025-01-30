@@ -13,7 +13,7 @@ const Navigation = () => {
     <div>
       <div className="hidden md:flex items-center gap-5">
         <NavItem to="/explorer">Explorer</NavItem>
-        <NavItem to="/docs">Docs</NavItem>
+        <NavItem to="https://docs.assetsquare.xyz/">Docs</NavItem>
         <NavItem to="/dashboard">My Account</NavItem>
       </div>
       <div className="md:hidden relative">
@@ -25,7 +25,7 @@ const Navigation = () => {
             <NavItem to="/explorer">Explorer</NavItem>
           </div>
           <div className="block my-1">
-            <NavItem to="/docs">Docs</NavItem>
+            <NavItem to="https://docs.assetsquare.xyz/">Docs</NavItem>
           </div>
           <div className="block my-1">
             <NavItem to="/dashboard">My Account</NavItem>

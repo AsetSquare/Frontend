@@ -39,3 +39,22 @@ export const useGetAllAssets = () => {
     refetchOnWindowFocus: false,
   });
 };
+
+export const useSearchMarketsAssets = () => {
+  const { page, pageLimit, search } = useSearchQueries();
+
+  return useQuery({
+    queryKey: ["searchAssets", page, pageLimit, search],
+    queryFn: async () => {
+      const { data } = await axiosApi.get(`/market/explorer/search`, {
+        params: {
+          page,
+          limit: pageLimit,
+          q: search,
+        },
+      });
+      return data;
+    },
+    refetchOnWindowFocus: false,
+  });
+};

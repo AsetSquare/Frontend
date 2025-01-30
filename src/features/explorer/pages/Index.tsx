@@ -9,15 +9,28 @@ import Table from "../layouts/table/Index";
 import ScrollingCarouselFilters from "../components/scroll-filters/Index";
 import { useGetMarkets } from "../services/get-markets/Index";
 import { useMemo } from "react";
-import { useGetAllAssets, useSearchAssets } from "../services/get-assets/Index";
+import {
+  useGetAllAssets,
+  useSearchMarketsAssets,
+} from "../services/get-assets/Index";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "@/utils/localstorage/Index";
+import { useMetrics } from "../services/get-explorer-metrics/Index";
 
 const Explorer = () => {
   const { data } = useGetMarkets();
   const { data: assetsData } = useGetAllAssets();
-  const { data: assetsSearch, isError, isLoading, refetch } = useSearchAssets();
+  const { data: metrics } = useMetrics();
+
+  const {
+    data: assetsSearch,
+    isError,
+    isLoading,
+    refetch,
+  } = useSearchMarketsAssets();
   const navigate = useNavigate();
+
+  //Market Collections
   const collections = useMemo(() => {
     return (
       data?.data?.items?.markets?.map((cur: any) => ({
@@ -34,6 +47,7 @@ const Explorer = () => {
     );
   }, [data]);
 
+  //Assets Collections
   const assets = useMemo(() => {
     return (
       assetsData?.data?.items?.assets?.map((cur: any) => ({
@@ -51,22 +65,30 @@ const Explorer = () => {
     );
   }, [assetsData]);
 
+  //Search Markets & Assets
   const searchAssets = useMemo(() => {
-    return (
-      assetsSearch?.data?.items?.assets?.map((cur: any) => ({
-        asset: cur.name,
-        name: cur.name,
-        id: cur._id,
-        assetAddress: cur.assetAddress,
-        type: cur.assetType,
-        amount: cur.currentValue,
-        description: cur.description,
-        imageUrl: cur.imageUrl,
-        marketId: cur.marketId,
-        ownerId: cur.ownerId,
-        status: cur.status,
-      })) || []
-    );
+    const markets =
+      assetsSearch?.data?.items?.markets?.items?.map((cur: any) => {
+        return {
+          id: cur._id,
+          name: cur.name,
+          description: cur.description,
+          imageUrl: cur.imageUrl,
+          type: "Market",
+        };
+      }) || [];
+    const assets =
+      assetsSearch?.data?.items?.assets?.items?.map((cur: any) => {
+        return {
+          id: cur._id,
+          name: cur.name,
+          description: cur.description,
+          imageUrl: cur.imageUrl,
+          type: "Asset",
+        };
+      }) || [];
+
+    return [...markets, ...assets];
   }, [assetsSearch]);
 
   const handleCollection = (value: {
@@ -126,31 +148,51 @@ const Explorer = () => {
         <div className="flex card-carousel overflow-x-auto xl:overflow-x-visible gap-5">
           <Card
             title="Total Value Locked"
-            stats={"$" + formatAmount(200000)}
+            stats={
+              "$" +
+                (metrics?.data?.items?.totalValueLocked &&
+                  formatAmount(metrics?.data?.items?.totalValueLocked)) || 0
+            }
             icon={<PiLockKeyFill className="text-[15px] md:text-[18px]" />}
           />
 
           <Card
             title="Total Markets"
-            stats={formatAmount(13747)}
+            stats={
+              (metrics?.data?.items?.totalMarkets &&
+                formatAmount(metrics?.data?.items?.totalMarkets)) ||
+              0
+            }
             icon={<PiLockKeyFill className="text-[15px] md:text-[18px]" />}
           />
 
           <Card
             title="Total Assets"
-            stats={formatAmount(6737483)}
+            stats={
+              (metrics?.data?.items?.totalAssets &&
+                formatAmount(metrics?.data?.items?.totalAssets)) ||
+              0
+            }
             icon={<PiLockKeyFill className="text-[15px] md:text-[18px]" />}
           />
 
           <Card
             title="Total Assets (Delivered)"
-            stats={formatAmount(5993047)}
+            stats={
+              (metrics?.data?.items?.totalAssetsDelivered &&
+                formatAmount(metrics?.data?.items?.totalAssetsDelivered)) ||
+              0
+            }
             icon={<PiLockKeyFill className="text-[15px] md:text-[18px]" />}
           />
 
           <Card
             title="Total Assets (en Route)"
-            stats={formatAmount(13047)}
+            stats={
+              (metrics?.data?.items?.totalAssetsEnRoute &&
+                formatAmount(metrics?.data?.items?.totalAssetsEnRoute)) ||
+              0
+            }
             icon={<PiLockKeyFill className="text-[15px] md:text-[18px]" />}
           />
         </div>
