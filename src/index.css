@@ -1,0 +1,28 @@
+@import url("./font/stylesheet.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-width)));
+  }
+}
+
+.paused {
+  animation-play-state: paused !important;
+}
+
+.card-carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth !important;
+  scrollbar-width: none !important;
+}
+
+.card-carousel::-webkit-scrollbar {
+  display: none;
+}
