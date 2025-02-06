@@ -1,6 +1,5 @@
 import Logo from "@/components/logo/Index";
 import Navigation from "../top-navigation/Index";
-import { UnifiedWalletButton } from "@jup-ag/wallet-adapter";
 import WalletButton from "@/components/button/ConnectWalletButton";
 
 const Header = () => {
