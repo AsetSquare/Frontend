@@ -35,7 +35,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error("Failed to fetch profile data. Please try again later.");
+      toast.error(
+        "Failed to fetch profile data. Please try again later." || apierror
+      );
     }
   }, [error]);
 

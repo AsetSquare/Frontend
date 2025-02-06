@@ -102,7 +102,7 @@ export const CopyText = ({
   return (
     <div>
       <div className="flex items-center gap-3 text-green-dark-6">
-        <p className="text-body-4">{shortenString(value, length)}</p>
+        <p className="text-body-4">{shortenString(value)}</p>
         <RiFileCopyLine
           className="text-[18px] cursor-pointer"
           onClick={handleCopy}
