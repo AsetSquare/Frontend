@@ -1,0 +1,64 @@
+{
+  "hash": "bb1143a2",
+  "configHash": "f099b004",
+  "lockfileHash": "ed0ce84f",
+  "browserHash": "fd6f40b7",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "c7b7f607",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "c34d89e7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ba9eb114",
+      "needsInterop": true
+    },
+    "@tanstack/react-query": {
+      "src": "../../node_modules/@tanstack/react-query/build/modern/index.js",
+      "file": "@tanstack_react-query.js",
+      "fileHash": "ff0186c0",
+      "needsInterop": false
+    },
+    "react-hot-toast": {
+      "src": "../../node_modules/react-hot-toast/dist/index.mjs",
+      "file": "react-hot-toast.js",
+      "fileHash": "9d15e24e",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "3b5e1e7f",
+      "needsInterop": false
+    },
+    "@jup-ag/wallet-adapter": {
+      "src": "../../node_modules/@jup-ag/wallet-adapter/dist/components.esm.js",
+      "file": "@jup-ag_wallet-adapter.js",
+      "fileHash": "9de1c5ad",
+      "needsInterop": false
+    },
+    "react-icons/ri": {
+      "src": "../../node_modules/react-icons/ri/index.mjs",
+      "file": "react-icons_ri.js",
+      "fileHash": "efc71c03",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-KAYRWOVB": {
+      "file": "chunk-KAYRWOVB.js"
+    },
+    "chunk-FOIKYQQY": {
+      "file": "chunk-FOIKYQQY.js"
+    }
+  }
+}
