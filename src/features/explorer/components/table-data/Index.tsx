@@ -58,10 +58,10 @@ const TableData = ({
         </p>
       </div>
       <div className="col-span-2">
-        <CopyText value={buyer} length={12} />
+        <CopyText value={buyer} />
       </div>
       <div className="col-span-2">
-        <CopyText value={assetID} length={12} />
+        <CopyText value={assetID} />
       </div>
     </div>
   );
@@ -69,13 +69,7 @@ const TableData = ({
 
 export default TableData;
 
-export const CopyText = ({
-  value,
-  length,
-}: {
-  value: string;
-  length: number;
-}) => {
+export const CopyText = ({ value }: { value: string }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
