@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
       <div className="flex md:hidden mx-auto justify-end mt-2">
         <div className="flex items-center gap-1.5">
-          <p className="text-body-4 text-white-5">Join us On</p>
+          <p className="text-body-4 text-white-5">Join US On</p>
           <FaXTwitter className="md:text-[16px] xl:text-[28px] text-white-1" />
         </div>
       </div>
