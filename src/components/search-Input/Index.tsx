@@ -119,8 +119,13 @@ const SearchInput = ({
                     key={cur.id}
                     className="px-3 py-4 border-y border-white-6 flex items-center cursor-pointer gap-3"
                     onClick={() => {
-                      saveToLocalStorage("asset", cur);
-                      navigate(`/explorer/asset/${cur.id}`);
+                      if (cur.type === "market") {
+                        saveToLocalStorage("market", cur);
+                        navigate(`/explorer/${cur.id}`);
+                      } else {
+                        saveToLocalStorage("asset", cur);
+                        navigate(`/explorer/asset/${cur.id}`);
+                      }
                     }}
                   >
                     <img

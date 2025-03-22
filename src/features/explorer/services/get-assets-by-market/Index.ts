@@ -22,7 +22,7 @@ export const useGetAssetsByMarket = () => {
   });
 };
 
-export const useGetMarketDetailOnchain = (marketId) => {
+export const useGetMarketDetailOnchain = (marketId: string) => {
   return useQuery({
     queryKey: ["marketsid"],
     queryFn: async () => {
@@ -36,6 +36,7 @@ export const useGetMarketDetailOnchain = (marketId) => {
       );
       return data;
     },
+
     refetchOnWindowFocus: false,
   });
 };

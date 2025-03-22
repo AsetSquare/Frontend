@@ -2,23 +2,22 @@ import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import Header from "@/layouts/header/Index";
 import ImageBg from "@/assets/bg/bg-1.svg";
+import BoxImg from "@/assets/images/dashboard-box.svg";
 import Card from "../../components/card/Index";
 import { formatAmount } from "@/utils/format-amount/Index";
-import { RiFileCopyLine } from "react-icons/ri";
+import { RiArticleFill, RiFileCopyLine } from "react-icons/ri";
 import { FaWallet } from "react-icons/fa6";
 import { MdKey } from "react-icons/md";
 import {
   useGetProfile,
   useGetApiKey,
 } from "@/features/explorer/services/get-api-key";
+import { BiSolidRightArrow } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useGetProfile();
-  const {
-    data: Apidata,
-    error: apierror,
-    isLoading: apiLoading,
-  } = useGetApiKey();
+  const { data: Apidata, isLoading: apiLoading } = useGetApiKey();
   const [profileData, setProfileData] = useState({
     publicKey: "",
     walletBalance: 0,
@@ -83,6 +82,56 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-12 items-center gap-y-4 md:gap-y-0 md:gap-5 my-4 md:my-5 xl:my-8 px-[3%]">
+        <img
+          src={BoxImg}
+          className="col-span-12 md:col-span-4 block mx-auto md:mx-0"
+        />
+        <div className="col-span-12 md:col-span-8">
+          <h4 className="text-title-4 text-white-1">Asset Square</h4>
+          <p className="text-body-4 text-white-2 mt-2">
+            Asset Square is a pioneering Web3 solution that redefines how
+            businesses and consumers interact with digital and tangible assets
+            in the commerce landscape. Designed with both developers and
+            consumers in mind with a robust explorer, Asset Square seamlessly
+            bridges traditional commerce with blockchain-driven innovations,
+            empowering users to discover, manage, and leverage assets in a
+            secure, transparent environment.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-12 gap-5 mb-20 mt-14 px-4">
+        <div className="xl:col-span-3 md:col-span-6 col-span-12">
+          <CardDocs
+            title="Documentation"
+            text="Verify if the bank account details provided by customers are correct"
+            to=""
+          />
+        </div>
+        <div className="xl:col-span-3 md:col-span-6 col-span-12">
+          <CardDocs
+            title="Transfer API"
+            text="Verify if the bank account details provided by customers are correct"
+            to=""
+          />
+        </div>
+        <div className="xl:col-span-3 md:col-span-6 col-span-12">
+          <CardDocs
+            title="Integrate SDK"
+            text="Verify if the bank account details provided by customers are correct"
+            to=""
+          />
+        </div>
+        <div className="xl:col-span-3 md:col-span-6 col-span-12">
+          <CardDocs
+            title="Query Data"
+            text="Verify if the bank account details provided by customers are correct"
+            to=""
+          />
         </div>
       </div>
     </div>
@@ -155,6 +204,31 @@ export const KeysClipboard = ({
           <CopyText value={value} />
         </div>
       </div>
+    </div>
+  );
+};
+
+export const CardDocs = ({
+  title,
+  text,
+  to,
+}: {
+  title: string;
+  text: string;
+  to: string;
+}) => {
+  return (
+    <div className="bg-green-dim-11 border border-green-dark-10 rounded-lg py-5 px-5 md:py-7 md:px-8">
+      <h4 className="text-title-5 text-green-dark-6">{title}</h4>
+      <p className="text-body-4 text-white-1 mt-2.5">{text}</p>
+      <Link
+        to={to}
+        className="mt-9 flex items-center gap-1 text-sub-5 text-green-dark-6 hover:text-green-dark-7 transition-all duration-700"
+      >
+        <RiArticleFill className="text-[14px]" />
+        <span>See Docs</span>
+        <BiSolidRightArrow className="text-[10px]" />
+      </Link>
     </div>
   );
 };
