@@ -71,7 +71,7 @@ const MarketSearch = () => {
               </div>
               <div className="bg-black-6 border border-black-5 rounded-md py-2 px-3 flex items-center gap-5 justify-between">
                 <p className="text-body-4 text-black-4">Creator</p>
-                <CopyText value={market?.creatorId} length={12} />
+                <CopyText value={market?.creatorId} />
               </div>
             </div>
             <div className="col-span-12 md:col-span-12 xl:col-span-5 bg-black-6 border border-black-5 rounded-lg py-6 px-3.5 md:px-7">

@@ -44,7 +44,7 @@ import { useWallet } from "@jup-ag/wallet-adapter";
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { auth, setAuth } = useAuth();
-  const { disconnecting, connected, publicKey } = useWallet();
+  const { disconnecting, publicKey } = useWallet();
   const navigate = useNavigate();
 
   useEffect(() => {

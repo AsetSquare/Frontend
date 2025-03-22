@@ -1,4 +1,4 @@
-export function shortenString(str: string, maxLength: number = 5) {
+export function shortenString(str: string) {
   if (typeof str !== "string") {
     throw new Error("str must be a string");
   }

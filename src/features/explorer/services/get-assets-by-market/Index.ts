@@ -36,7 +36,6 @@ export const useGetMarketDetailOnchain = (marketId: string) => {
       );
       return data;
     },
-
     refetchOnWindowFocus: false,
   });
 };
