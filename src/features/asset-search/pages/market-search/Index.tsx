@@ -4,6 +4,7 @@ import SearchInput from "@/components/search-Input/Index";
 import { KeysClipboard } from "@/features/dashboard/pages/dashboard/Index";
 import { CopyText } from "@/features/explorer/components/table-data/Index";
 import { useSearchAssets } from "@/features/explorer/services/get-assets/Index";
+import Footer from "@/layouts/footer/Index";
 import Header from "@/layouts/header/Index";
 import { formatAmount } from "@/utils/format-amount/Index";
 import { getFromLocalStorage } from "@/utils/localstorage/Index";
@@ -122,6 +123,7 @@ const MarketSearch = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

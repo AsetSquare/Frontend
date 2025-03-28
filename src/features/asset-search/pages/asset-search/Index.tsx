@@ -1,6 +1,7 @@
 import ImageBg from "@/assets/bg/bg-2.svg";
 import { KeysClipboard } from "@/features/dashboard/pages/dashboard/Index";
 import { CopyText } from "@/features/explorer/components/table-data/Index";
+import Footer from "@/layouts/footer/Index";
 import Header from "@/layouts/header/Index";
 import { formatAmount } from "@/utils/format-amount/Index";
 import { getFromLocalStorage } from "@/utils/localstorage/Index";
@@ -150,6 +151,7 @@ const AssetSearch = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
